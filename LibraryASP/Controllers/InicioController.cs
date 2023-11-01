@@ -45,7 +45,7 @@ namespace LibraryASP.Controllers
             Usuario usuario_encontrado = await _userService.GetUsuario(correo, Utilities.EncryptPass(pass));
             if(usuario_encontrado == null)
             {
-                ViewData["Mensaje"] = "No se encontraron coincidencias";
+                ViewData["Mensaje"] = "No se encontró la cuenta";
                 return View();
             }
 

@@ -1,0 +1,28 @@
+﻿@model List<LibraryASP.Models.Libro>
+
+<h1>
+    Libros
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Año de publicación</th>
+            <th>Editorial</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var lib in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m=>lib.Titulo)</td>
+                <td>@Html.DisplayFor(m=>lib.Autor)</td>
+                <td>@Html.DisplayFor(m=>lib.AnioPublicacion)</td>
+                <td>@Html.DisplayFor(m=>lib.Editorial)</td>
+            </tr>
+        }
+    </tbody>
+</table>

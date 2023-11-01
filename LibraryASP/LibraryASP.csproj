@@ -21,12 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\sources\" />
+    <Folder Include="wwwroot\src\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\sources\BannerHome.jpg" />
-    <None Include="wwwroot\sources\ElViejoyelMar.jpg" />
+    <None Include="wwwroot\src\BannerHome.jpg" />
+    <None Include="wwwroot\src\ElViejoyelMar.jpg" />
   </ItemGroup>
 
 </Project>

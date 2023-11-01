@@ -20,3 +20,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto centrará verticalmente en la ventana gráfica */
+}
