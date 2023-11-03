@@ -23,22 +23,39 @@ namespace LibraryASP.Controllers
         {
             return View();
         }
+
+
+
         [HttpPost]
         public async Task<IActionResult> checkIn(Usuario modelo)
         {
-            modelo.Passwd = Utilities.EncryptPass(modelo.Passwd);
-            Usuario usuario_creado = await _userService.SaveUsuario(modelo);
+            try
+            {
+                modelo.Passwd = Utilities.EncryptPass(modelo.Passwd);
+                Usuario usuario_creado = await _userService.SaveUsuario(modelo);
 
-            if (usuario_creado.UsuarioId > 0)
-                return RedirectToAction("logIn","Inicio");
+                if (usuario_creado.UsuarioId > 0)
+                    return RedirectToAction("logIn", "Inicio");
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Usuario ya registrado")
+                {
+                    ViewData["Mensaje"] = "Usuario ya registrado";
+                    return View();
+                }
+                throw;
+            }
 
             ViewData["Mensaje"] = "No se pudo crear el usuario";
             return View();
         }
+
         public IActionResult logIn()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> logIn(string correo, string pass)
         {

@@ -10,10 +10,11 @@
     <meta name="viewport" content="width=device-width" />
     <title>checkIn</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" />
 </head>
 <body>
 
-    <div class="container mt-5 pt-5">
+    <div class="container mt-5 pt-5 center-div">
         <div class="col-12 col-xl-4 col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -21,9 +22,9 @@
                 </div>
                 <div class="card-body">
                     <form asp-controller="Inicio" asp-action="checkIn" method="post">
-                        <input class="form-control mb-3" type="text" placeholder="NombreCompleto" asp-for="Nombre" required />
+                        <input class="form-control mb-3" type="text" placeholder="Nombre Completo" asp-for="Nombre" required />
                         <input class="form-control mb-3" type="text" placeholder="Correo" asp-for="Email" required />
-                        <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="Passwd" required />
+                        <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="Passwd" required/>
                         <div class="d-grid gap-2 mb-3">
                             <button class="btn btn-primary" type="submit">Registrate</button>
                         </div>
@@ -35,7 +36,7 @@
                                 </div>
                             </div>
                         }
-                        ¿Ya tienes una cuenta? <a href="@Url.Action("logIn","Inicio")">Inicar sesión!</a>
+                        ¿Ya tienes una cuenta? <a href="@Url.Action("logIn","Inicio")">Iniciar sesión!</a>
                     </form>
                 </div>
             </div>

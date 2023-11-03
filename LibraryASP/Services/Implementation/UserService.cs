@@ -2,6 +2,7 @@
 using LibraryASP.Models;
 using LibraryASP.Services.Contract;
 using LibraryASP.Context;
+using Microsoft.Data.SqlClient;
 
 namespace LibraryASP.Services.Implementation
 {
@@ -23,9 +24,20 @@ namespace LibraryASP.Services.Implementation
 
         public async Task<Usuario> SaveUsuario(Usuario model)
         {
-            _dbContext.Usuarios.Add(model);
-            await _dbContext.SaveChangesAsync();
-            return model;
+            try
+            {
+                _dbContext.Usuarios.Add(model);
+                await _dbContext.SaveChangesAsync();
+                return model;
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException is SqlException sqlEx && sqlEx.Number == 2627)
+                {
+                    throw new Exception("Usuario ya registrado");
+                }
+                throw;
+            }
         }
     }
 }
